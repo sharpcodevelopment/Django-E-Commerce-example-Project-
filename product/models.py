@@ -17,6 +17,13 @@ class Category(models.Model):
 
     def __str__(self):
         return self.title
+
+    def image_tag(self):
+        if self.image and hasattr(self.image,'url'):
+            return mark_safe('<img src="{}" width="65" height="60"/>'.format(self.image.url))
+        else:
+            return 'resim yüklenemedi'
+    image_tag.short_description='Image'
     
 class Product(models.Model):
     STATUS= (('True','Evet'),
@@ -51,6 +58,12 @@ class Imagess(models.Model):
     image=models.ImageField(blank=True,upload_to='images/')
     def __str__(self):
         return self.title
+    def image_tag(self):
+        if self.image and hasattr(self.image,'url'):
+            return mark_safe('<img src="{}" width="65" height="60"/>'.format(self.image.url))
+        else:
+            return 'resim yüklenemedi'
+    image_tag.short_description='Image'
     
 class CategoryImagess(models.Model):
 
@@ -59,3 +72,9 @@ class CategoryImagess(models.Model):
     image=models.ImageField(blank=True,upload_to='images/')
     def __str__(self):
         return self.title
+    def image_tag(self):
+        if self.image and hasattr(self.image,'url'):
+            return mark_safe('<img src="{}" width="65" height="60"/>'.format(self.image.url))
+        else:
+            return 'resim yüklenemedi'
+    image_tag.short_description='Image'
