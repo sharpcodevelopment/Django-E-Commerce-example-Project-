@@ -1,2 +1,5 @@
 {% extends "homebase.html" %}
-{% block title %}Sergen E-Commerce{% endblock title %}
+{% block title %}{{settings.title}}{% endblock title %}
+{% block head %}
+<link rel="icon" type="image/png" sizes="32x32" href="{{settings.icon.url}}">
+{% endblock head %}
